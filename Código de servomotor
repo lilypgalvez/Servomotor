@@ -1,0 +1,31 @@
+#include <Servo.h>.
+
+Servo myServo;
+int posicion = 0;
+
+void setup() {
+  Serial.begin(9600);
+  myServo.attach(3);
+}
+
+void loop() {
+  myServo.write(0);
+  delay(1000);
+  myServo.write(90);
+  delay(1000);
+  myServo.write(180);
+  delay(1000);
+
+
+  ///mover desde 0° hasta 180°
+  for(posicion=0; posicion<=180; posicion++){
+    myServo.write(posicion);
+    delay(50);//mover un grado cada 50 milisegundos
+  }
+   //Mover el motor desde 180 grados hasta 0 grados
+  for (posicion=180; posicion>=0; posicion--){ 
+    myServo.write(posicion);              
+    delay(50);  //Mover un grado cada 50 milisegundos                                            
+  }
+   
+}
